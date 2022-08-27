@@ -36,7 +36,7 @@ class ServerBase:
 
     def __init__(self, *args, **kwargs):
         # routes
-        self.server_domain = kwargs.get("server_domain", "https://dnsapi.cn")
+        self.server_domain = kwargs.get("server_domain", "https://dnsapi.cn").rstrip("/")
         self.api_routes = kwargs.get("api_routes", {
             "user_detail": "User.Detail",
             "domain_list": "Domain.List",
@@ -62,7 +62,7 @@ class ServerBase:
             "6": "user id wrong (only proxy)",
             "7": "user not in your account (only proxy)",
             "83": "blocked at this account",
-            "85": "current IP address not in allowed list, for login in area protection"
+            "85": "current IP address not in allowed list for login in area protection"
         }
         self.return_code.update(kwargs.get("return_code", {}))
         # init
@@ -196,3 +196,6 @@ class DnsPodServer(ServerBase):
                             print(f"record {record_id} not match aim.")
                     else:
                         print(f"record {record['id']} not enabled.")
+
+    def static_ddns(self, **kwargs):
+        self.record_ddns(**kwargs)

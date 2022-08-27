@@ -1,0 +1,34 @@
+# personal configs
+static_ddns:
+  sub_domain: ...
+  domain_id: ...
+  record_id: ...
+  record_type: ...
+  record_line: ...
+
+login_token: ...
+
+ethernet: ...
+# static configs
+api_routes:
+  user_detail: User.Detail
+  domain_list: Domain.List
+  record_list: Record.List
+  record_ddns: Record.Ddns
+server_domain: https://dnsapi.cn
+return_code:
+  -1: login fail
+  -2: api usage out of limits
+  -3: illegal proxy (only proxy)
+  -4: not under the proxy (only proxy)
+  -7: no right at the interface
+  -8: blocked by too many failure login
+  -85: block by remote login
+  -99: try later for this application not open yet
+  1: Operation successful
+  2: only support POST request
+  3: unknown error
+  6: user id wrong (only proxy)
+  7: user not in your account (only proxy)
+  83: blocked at this account
+  85: current IP address not in allowed list for login in area protection
