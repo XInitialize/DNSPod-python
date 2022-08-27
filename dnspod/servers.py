@@ -86,7 +86,8 @@ class ServerBase:
             flag = False
             if code == "1":
                 flag = True
-            return flag, code + ": " + self.return_code[ret["status"]["code"]], ret
+            return_msg = self.return_code.get(ret["status"]["code"], ret["status"]["message"])
+            return flag, code + ": " + return_msg, ret
         except Exception as e:
             return False, "PYERROR: " + str(e), None
 
