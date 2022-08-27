@@ -23,9 +23,10 @@ def main():
     if args.function.lower() == "ddns":
         dnspod_server = DnsPodServer(**configs)
         value = get_ipv4_address(configs["ethernet"])
-        configs["value"] = value
         print(f"get ethernet: {configs['ethernet']} inet4 address: {value}")
-        print(dnspod_server.static_ddns(**configs))
+        static_ddns = configs.get("static_ddns")
+        static_ddns["value"] = value
+        print(dnspod_server.static_ddns(**static_ddns))
 
 
 if __name__ == '__main__':

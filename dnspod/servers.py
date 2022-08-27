@@ -199,4 +199,4 @@ class DnsPodServer(ServerBase):
                         print(f"record {record['id']} not enabled.")
 
     def static_ddns(self, **kwargs):
-        self.record_ddns(**kwargs)
+        return self.record_ddns(**kwargs)
