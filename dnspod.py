@@ -24,6 +24,7 @@ def main():
         dnspod_server = DnsPodServer(**configs)
         value = get_ipv4_address(configs["ethernet"])
         configs["value"] = value
+        print(f"get ethernet: {configs['ethernet']} inet4 address: {value}")
         print(dnspod_server.static_ddns(**configs))
 
 
